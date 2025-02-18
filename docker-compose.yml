@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:12
+    container_name: exersyncdb
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    environment:
+      POSTGRES_USER: "fernando"
+      POSTGRES_PASSWORD: fernando123
+      POSTGRES_DB: exersyncdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
