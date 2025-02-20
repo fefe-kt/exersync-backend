@@ -1,3 +1,8 @@
+jwt:
+  expiration: ${JWT_EXPIRE_TIME}
+  refresh-time: ${JWT_REFRESH_TIME}
+  secret: ${JWT_SECRET_KEY}
+
 spring:
   application:
     name: exersync
@@ -14,3 +19,6 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
   config:
     import: optional:file:.env[.properties]
+  integration:
+    management:
+      default-logging-enabled: true

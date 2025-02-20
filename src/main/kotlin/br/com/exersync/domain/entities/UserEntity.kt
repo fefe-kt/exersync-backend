@@ -1,20 +1,17 @@
 package br.com.exersync.domain.entities
 
 import br.com.exersync.domain.enums.RoleEnum
-import jakarta.persistence.CascadeType
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = [UniqueConstraint(columnNames = ["userName", "email"])])
 data class UserEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     var name: String,
+    @Column(unique = true)
+    var userName: String,
+    @Column(unique = true)
     var email: String,
     var password: String,
     var phone: String,
