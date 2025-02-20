@@ -1,0 +1,24 @@
+jwt:
+  expiration: ${JWT_EXPIRE_TIME}
+  refresh-time: ${JWT_REFRESH_TIME}
+  secret: ${JWT_SECRET_KEY}
+
+spring:
+  application:
+    name: exersync
+  datasource:
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  config:
+    import: optional:file:.env[.properties]
+  integration:
+    management:
+      default-logging-enabled: true

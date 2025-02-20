@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/users/v1")
 class UserController(private val service: UserService) {
-    @PostMapping("/create")
-    fun createUser(@RequestBody user: UserRequest) : UserResponse {
+    @PostMapping("/login")
+    fun loginUser(@RequestBody user: UserRequest): UserResponse {
         return service.createUser(user.toEntity()).toResponse()
     }
-    
+
+    @PostMapping("/signup")
+    fun signupUser(@RequestBody user: UserRequest): UserResponse {
+        return service.createUser(user.toEntity()).toResponse()
+    }
 }

@@ -1,3 +1,5 @@
 package br.com.exersync.dto.exceptions
 
-class InvalidEmailException : IllegalArgumentException("O email digitado é inválido.")
+import org.springframework.http.HttpStatus
+
+class InvalidEmailException : BaseExerSyncException("O email digitado é inválido.", HttpStatus.NOT_ACCEPTABLE)
