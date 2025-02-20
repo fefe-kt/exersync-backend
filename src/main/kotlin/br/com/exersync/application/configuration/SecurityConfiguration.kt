@@ -22,7 +22,11 @@ class SecurityConfiguration(
     ): DefaultSecurityFilterChain {
         http.csrf { csrf -> csrf.disable() }
             .authorizeHttpRequests { httpRequests ->
-                httpRequests.requestMatchers("/**").permitAll()
+                httpRequests
+                    .requestMatchers("/api/v1/auth/**")
+                    .permitAll()
+                    .anyRequest()
+                    .fullyAuthenticated()
             }
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
