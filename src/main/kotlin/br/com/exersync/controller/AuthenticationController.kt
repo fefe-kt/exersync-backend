@@ -1,6 +1,7 @@
 package br.com.exersync.controller
 
 import br.com.exersync.dto.request.UserRequest
+import br.com.exersync.dto.request.authentication.RefreshRequest
 import br.com.exersync.dto.request.authentication.UserLoginRequest
 import br.com.exersync.dto.response.AuthenticatedUserResponse
 import br.com.exersync.services.AuthenticationService
@@ -23,4 +24,8 @@ internal class AuthenticationController(
     @PostMapping("/signup")
     fun signup(@Valid @RequestBody signUpRequest: UserRequest): AuthenticatedUserResponse? =
         authenticationService.signup(signUpRequest)
+
+    @PostMapping("/refresh")
+    fun refresh(@Valid @RequestBody refreshRequest: RefreshRequest): AuthenticatedUserResponse =
+        authenticationService.refreshToken(refreshRequest.refreshToken)
 }

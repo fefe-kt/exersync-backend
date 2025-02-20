@@ -8,4 +8,8 @@ sealed class AuthException(override val message: String) : BaseExerSyncException
     class BlockedUserException : AuthException("Usuário bloqueado.")
 
     class InvalidCredentialsException : AuthException("Credenciais inválidas.")
+
+    class UserNotFoundException : AuthException("Usuário não encontrado.")
+
+    class ExpiredSessionException : AuthException("Sessão expirada.")
 }

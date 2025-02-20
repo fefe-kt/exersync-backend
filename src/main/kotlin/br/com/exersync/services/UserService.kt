@@ -2,6 +2,7 @@ package br.com.exersync.services
 
 import br.com.exersync.domain.entities.UserEntity
 import br.com.exersync.domain.repositories.UserRepository
+import br.com.exersync.dto.exceptions.AuthException
 import br.com.exersync.dto.mappers.toUserDetails
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -28,6 +29,6 @@ class UserService(private val userRepository: UserRepository, private val passwo
 
     override fun loadUserByUsername(username: String?): UserDetails =
         userRepository.findByEmail(username)?.toUserDetails()
-            ?: throw UsernameNotFoundException("O email não foi encontrado")
+            ?: throw AuthException.UserNotFoundException()
 
 }
