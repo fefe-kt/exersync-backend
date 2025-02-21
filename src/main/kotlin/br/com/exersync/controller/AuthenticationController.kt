@@ -2,6 +2,7 @@ package br.com.exersync.controller
 
 import br.com.exersync.dto.request.UserRequest
 import br.com.exersync.dto.request.authentication.RefreshRequest
+import br.com.exersync.dto.request.authentication.SocialLoginRequest
 import br.com.exersync.dto.request.authentication.UserLoginRequest
 import br.com.exersync.dto.response.AuthenticatedUserResponse
 import br.com.exersync.services.AuthenticationService
@@ -28,4 +29,7 @@ internal class AuthenticationController(
     @PostMapping("/refresh")
     fun refresh(@Valid @RequestBody refreshRequest: RefreshRequest): AuthenticatedUserResponse =
         authenticationService.refreshToken(refreshRequest.refreshToken)
+
+    @PostMapping("/social-login")
+    fun socialLogin(@Valid @RequestBody socialLoginRequest: SocialLoginRequest): AuthenticatedUserResponse? =
 }
