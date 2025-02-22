@@ -1,9 +1,10 @@
 package br.com.exersync.services.validators
 
-import br.com.exersync.dto.data.CommonSocialLoginParams
+import br.com.exersync.domain.entities.UserEntity
 import org.springframework.stereotype.Component
 
 
-abstract class ISocialLoginValidator(val provider: String) {
-    abstract suspend operator fun invoke(token: String): CommonSocialLoginParams
+interface ISocialLoginValidator {
+    val provider: String
+    suspend operator fun invoke(token: String): UserEntity
 }

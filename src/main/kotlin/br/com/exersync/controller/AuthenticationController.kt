@@ -7,6 +7,8 @@ import br.com.exersync.dto.request.authentication.UserLoginRequest
 import br.com.exersync.dto.response.AuthenticatedUserResponse
 import br.com.exersync.services.AuthenticationService
 import jakarta.validation.Valid
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -31,5 +33,6 @@ internal class AuthenticationController(
         authenticationService.refreshToken(refreshRequest.refreshToken)
 
     @PostMapping("/social-login")
-    fun socialLogin(@Valid @RequestBody socialLoginRequest: SocialLoginRequest): AuthenticatedUserResponse? =
+    suspend fun socialLogin(@Valid @RequestBody socialLoginRequest: SocialLoginRequest): AuthenticatedUserResponse? =
+        authenticationService.socialLogin(socialLoginRequest)
 }

@@ -14,8 +14,8 @@ data class UserEntity(
     @Column(unique = true)
     var email: String,
     var password: String,
-    var phone: String,
-    var profilePictureUrl: String?,
+    var phone: String? = null,
+    var profilePictureUrl: String? = null,
     var role: RoleEnum = RoleEnum.REGULAR_USER,
 
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
