@@ -23,7 +23,6 @@ internal class AuthenticationController(
     fun login(@Valid @RequestBody loginRequest: UserLoginRequest): AuthenticatedUserResponse? =
         authenticationService.login(loginRequest)
 
-
     @PostMapping("/signup")
     fun signup(@Valid @RequestBody signUpRequest: UserRequest): AuthenticatedUserResponse? =
         authenticationService.signup(signUpRequest)

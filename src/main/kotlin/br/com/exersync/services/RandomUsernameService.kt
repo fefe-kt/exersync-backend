@@ -13,7 +13,7 @@ class RandomUsernameService(private val userService: UserRepository) {
         val minSubstringLength = name.length / 2
         var usernameCandidate: String
 
-        do {
+        do { // min: fe -> max: 2 - 4
             val randomEndIndex = Random.nextInt(minSubstringLength..name.length)
             usernameCandidate = name.substring(0, randomEndIndex) + generateRandomSuffix()
         } while (userService.existsByUserName(usernameCandidate))
