@@ -1,6 +1,7 @@
 package br.com.exersync.application.configuration
 
 import br.com.exersync.application.configuration.properties.JwtProperties
+import br.com.exersync.application.configuration.properties.ProviderProperties
 import br.com.exersync.domain.repositories.UserRepository
 import br.com.exersync.services.UserService
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -14,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 @Configuration
-@EnableConfigurationProperties(JwtProperties::class)
+@EnableConfigurationProperties(JwtProperties::class, ProviderProperties::class)
 class Configuration {
 
     @Bean

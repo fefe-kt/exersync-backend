@@ -21,6 +21,6 @@ class ExerciseController(private val exerciseService: ExerciseService) {
 
     @PostMapping
     fun createExercise(@RequestBody exercise: ExerciseEntity) {
-        
+
     }
 }

@@ -26,7 +26,7 @@ class SecurityConfiguration(
                     .requestMatchers("/api/v1/auth/**")
                     .permitAll()
                     .anyRequest()
-                    .fullyAuthenticated()
+                    .authenticated()
             }
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

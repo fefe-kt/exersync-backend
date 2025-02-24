@@ -12,4 +12,6 @@ sealed class AuthException(override val message: String) : BaseExerSyncException
     class UserNotFoundException : AuthException("Usuário não encontrado.")
 
     class ExpiredSessionException : AuthException("Sessão expirada.")
+
+    class InvalidOAuthTokenException : AuthException("O token do login social é inválido.")
 }
